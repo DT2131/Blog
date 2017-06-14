@@ -75,6 +75,7 @@
 <script type="text/javascript">
 	function cal(x){
 		var str=calc.result.value;
+		if(str=="0") str="";
 		switch(x){
 			case 1:calc.result.value="";break;
 			//alert(1);
@@ -94,7 +95,7 @@
 			case 15:calc.result.value=str+'3';break;
 			case 16:calc.result.value=str+'+';break;
 			case 17:calc.result.value=str+"*-1";break;
-			case 18:calc.result.value=(str=="0")?str:str+'0';break;
+			case 18:calc.result.value=str+'0';break;
 			case 19:calc.result.value=str+'.';break;
 			case 20:calc.result.value=eval(str);break;
 		}
