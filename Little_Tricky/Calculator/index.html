@@ -41,7 +41,7 @@
 			<form class="form-horizontal" role="form" name="calc">
 				<div class="form-group">
 			    	<label for="result">Result:</label>
-			    	<input type="text" class="form-control" name="result" value="">
+			    	<input type="text" class="form-control" name="result" value="" />
 			    	<br>
 				    <button type="button" class="col-md-3 column btn btn-default btn-sm" id="b_1" onclick="cal(1)">CE</button>
 				   	<button type="button" class="col-md-3 column btn btn-default btn-sm" id="b_2" onclick="cal(2)">%</button>
@@ -75,10 +75,9 @@
 <script type="text/javascript">
 	function cal(x){
 		var str=calc.result.value;
-		if(str=="0") str="";
+		if(str=="0"||str=="undefined") str="";
 		switch(x){
 			case 1:calc.result.value="";break;
-			//alert(1);
 			case 2:calc.result.value=str+'%';break;
 			case 3:calc.result.value=str.substring(0,str.length-1);break;
 			case 4:calc.result.value=str+'/';break;

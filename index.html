@@ -52,7 +52,7 @@
 							    <label>Password</label>
 							    <input type="password" class="form-control" id="password" placeholder="Password...">
 							    <label>Check</label>&nbsp&nbsp&nbsp
-							    <button type="button" class="btn btn-info btn-xs" onclick="make_checker(0)" id="show_checker">checker</button>
+							    <button type="button" class="btn btn-info btn-xs" onclick="make_checker(0);check_checker();" id="show_checker">checker</button>
 							    <input type="text" class="form-control" id="checker" placeholder="请输入验证码..." onfocus="make_checker(1)" onkeyup="check_checker()">
 							    <div id="status_checker"></div>
 						  	</div>
@@ -82,6 +82,7 @@
 				str+=Math.ceil(Math.random()*10)%10;
 			document.getElementById("show_checker").innerHTML = str;
 		}
+
 	}
 	function check_checker(){
 		var str1=document.getElementById("show_checker").innerHTML;
