@@ -34,28 +34,54 @@
   </div>
 </div>
 <div>
+
   	<form class="form-horizontal" role="form">
 	    <div class="form-group">
-	      	<label for="problem_number" class="col-sm-2 control-label">The number of problem:</label>
-	      	<div class="col-sm-10">
-	      		<div class="col-sm-5">
-	        		<input type="text" class="form-control" id="problem_number" />
-	      		</div>
-	      		<button type="submit" class="btn btn-default" onclick="show_problems()">Show Problems</button>
-	      		<button type="submit" class="btn btn-success" onclick="check_problems()">Check Problems</button>
-	      		<div id="problem_show">
-	      		</div>
+        
+        <div id="result"></div>
+        <div id="erro"></div>
+        
+        <br>
+	      	<div class="col-sm-offset-3 col-sm-12">
+            <script type="text/javascript">
+              var number1=new Array(100);
+              var number2=new Array(100);
+              var wrong=new Array(100);
+              document.write("<div class='col-sm-1'>");
+              for(var i=1;i<=10;i++){
+                number1[i]=Math.floor(Math.random()*10);
+                number2[i]=Math.floor(Math.random()*10);
+                document.write("("+i+")"+number1[i]+"+"+number2[i]+"=");
+                document.write("<input type='text' id=r"+i+ " class='form-control'  value='' >"+"<br>");
+              }
+              document.write("</div>");
+            </script>
 	      	</div>
 	    </div>
+      <div class="col-sm-offset-4 col-md-12">
+          <button type="submit" class="btn btn-success" onclick="check_problems()">Check Problems</button>
+     </div>
   	</form>
 </div>
 </body>
 </html>
 <script type="text/javascript">
-	function show_problems(){
-
-	}
 	function check_problems(){
-
+    var k=0,s,erros,str; 
+    for(i=1;i<=10;i++){ 
+      str="r"+i;
+      v=document.getElementById(str);
+      vr=parseInt(v.value);
+      if(number1[i]+number2[i]!=vr){
+           wrong[k]=i;
+           k++;
+        }
+    }
+    erros="";
+    for(i=0;i<k;i++) erros=erros+wrong[i]+",";    
+    v1=document.getElementById("result");
+    v1.innerHTML="你做错的题目一共是"+k+"道;分别是：";
+    v2=document.getElementById("erro");
+    v2.innerHTML=erros;
 	}
 </script>
