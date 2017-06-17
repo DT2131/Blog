@@ -48,9 +48,14 @@
 						<div class="modal-body">
 							<div class="form-group">
 							    <label>Username</label>
-							    <input type="text" class="form-control" id="name" placeholder="Username...">
+							    <input type="text" class="form-control" id="name" placeholder="Username..." onblur="check_username()">
+							    <div id="namechecker"></div>
 							    <label>Password</label>
-							    <input type="password" class="form-control" id="password" placeholder="Password...">
+							    <input type="password" class="form-control" id="password" placeholder="Password..." onblur="check_password()">
+							    <div id="passwordchecker"></div>
+							    <label>Password Confirm</label>
+							    <input type="password" class="form-control" id="password_confirm" placeholder="Password..." onblur="confirm_password()">
+							    <div id="passwordconfirmer"></div>
 							    <label>Check</label>&nbsp&nbsp&nbsp
 							    <button type="button" class="btn btn-info btn-xs" onclick="make_checker(0);check_checker();" id="show_checker">checker</button>
 							    <input type="text" class="form-control" id="checker" placeholder="请输入验证码..." onfocus="make_checker(1)" onkeyup="check_checker()">
@@ -75,6 +80,45 @@
 </body>
 </html>
 <script type="text/javascript">
+	function check_username(){
+		var status=0;
+		var str=document.getElementById("name").value;
+		
+		if(str.length<6||str.length>13)  status=1;
+		else{
+			for(var i=0;i<str.length;i++){
+				if(!((str.charAt(i)>='a'&&str.charAt(i)<='z')||(str.charAt(i)>='A'&&str.charAt(i)<='Z')||(str.charAt(i)>='0'&&str.charAt(i)<='9')||str.charAt(i)=='_')){
+					status=2;break;
+				}
+			}
+		}
+		if(status==1) str="The length of Username between 6 to 12 characters are expected.";
+		else if(status==2) str="Username should contain only Latin letters, digits or underscore.";
+		else str="";
+		document.getElementById("namechecker").innerHTML=str;
+	}
+	function check_password(){
+		var status=0;
+		var str=document.getElementById("password").value;
+		if(str.length<6||str.length>18)  status=1;
+		else{
+			for(var i=0;i<str.length;i++){
+				if(!((str.charAt(i)>='a'&&str.charAt(i)<='z')||(str.charAt(i)>='A'&&str.charAt(i)<='Z')||(str.charAt(i)>='0'&&str.charAt(i)<='9')||str.charAt(i)=='_')){
+					status=2;break;
+				}
+			}
+		}
+		if(status==1) str="The length of Password between 6 to 18 characters are expected.";
+		else if(status==2) str="Password should contain only Latin letters, digits or underscore.";
+		else str="";
+		document.getElementById("passwordchecker").innerHTML=str;
+	}
+	function confirm_password(){
+		var str;
+		if(document.getElementById("password").value==document.getElementById("password_confirm").value) str="";
+		else str="Different Password";
+		document.getElementById("passwordconfirmer").innerHTML=str;
+	}
 	function make_checker(x){
 		if(x==0||document.getElementById("show_checker").innerHTML=="checker"){
 			var str="";
