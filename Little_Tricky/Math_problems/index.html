@@ -57,7 +57,7 @@
 </body>
 </html>
 <script type="text/javascript">
-	var num1=new Array(),num2=new Array();
+	var num1,num2;
 	function make_pluz(x){
 		clear_pluz();
 		var st=document.getElementById("show_pluz");
@@ -68,11 +68,11 @@
 			newdiv.id=str2;
 			newdiv.className="col-md-3";
 			st.appendChild(newdiv);
-			num1[i]=Math.floor(Math.random()*100);
-			num2[i]=Math.floor(Math.random()*100);
+			num1=Math.floor(Math.random()*100);
+			num2=Math.floor(Math.random()*100);
 			var newspan=document.createElement("label");
 			str2=str3+String(i);
-			newspan.innerHTML=String(num1[i])+"+"+String(num2[i])+"=";
+			newspan.innerHTML=String(num1)+"+"+String(num2)+"=";
 			newspan.id=str2;
 			newspan.className="col-md-pull-1 col-md-2";
 			var newinput=document.createElement("input");
@@ -92,15 +92,27 @@
 			if(document.getElementById(str2)==undefined) break;
 			var temp=document.getElementById(str2);
 			st.removeChild(temp);
-			// str2=str3+String(i);
-			// temp=document.getElementById(str2);
-			// st.removeChild(temp);
-			// str2=str1+String(i);
-			// temp=document.getElementById(str2);
-			// st.removeChild(temp);
 		}
 	}
 	function check_pluz(){
-		
+		var str1="p",str2,str3="sp";
+		var status=-1;
+		for(var i=0;i<10000&&status==-1;i++){
+			str2=str1+String(i);
+			//alert(1);
+			if(document.getElementById(str2)==undefined) break;
+			var temp1=document.getElementById(str2).value;
+			str2=str3+String(i);
+			var temp2=document.getElementById(str2).innerHTML;
+			if(temp1!=eval(temp2.substring(0,temp2.length-1))){
+				status=i;
+			}
+		}
+		if(status==-1){
+			alert("Accepted");
+		}else{
+			str2="Wrong Answer on quiz "+(status+1);
+			alert(str2);
+		}
 	}
 </script>
