@@ -11,77 +11,96 @@
   </title>
 </head>
 <body style="background:url(/github/blog/image/2.jpg); background-size: cover;">
-<div class="container">
-  <div class="row clearfix">
-    <div class="col-md-12 column">
-      <nav class="navbar navbar-default" role="navigation">
-        <div class="navbar-header">
-           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="/github/blog">Dark Temple</a>
-        </div>
-        
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            <li>
-               <a href="/github/blog/Little_Tricky/Calculator">Calculator</a>
-            </li>
-            <li>
-               <a href="/github/blog/Little_Tricky/Math_problems">Math problems</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </div>
-  </div>
-</div>
-<div>
-
-  	<form class="form-horizontal" role="form">
-	    <div class="form-group">
-        
-        <div id="result"></div>
-        <div id="erro"></div>
-        
-        <br>
-	      	<div class="col-sm-offset-3 col-sm-12">
-            <script type="text/javascript">
-              var number1=new Array(100);
-              var number2=new Array(100);
-              var wrong=new Array(100);
-              document.write("<div class='col-sm-1'>");
-              for(var i=1;i<=10;i++){
-                number1[i]=Math.floor(Math.random()*10);
-                number2[i]=Math.floor(Math.random()*10);
-                document.write("("+i+")"+number1[i]+"+"+number2[i]+"=");
-                document.write("<input type='text' id=r"+i+ " class='form-control'  value='' >"+"<br>");
-              }
-              document.write("</div>");
-            </script>
-	      	</div>
+	<div class="container">
+	  	<div class="row clearfix">
+	    	<div class="col-md-12 column">
+	      		<nav class="navbar navbar-default" role="navigation">
+	        		<div class="navbar-header">
+	           			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="/github/blog">Dark Temple</a>
+	        		</div>
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			          	<ul class="nav navbar-nav">
+			            	<li>
+			               		<a href="/github/blog/Little_Tricky/Calculator">Calculator</a>
+			            	</li>
+			            	<li>
+			               		<a href="/github/blog/Little_Tricky/Math_problems">Math problems</a>
+			            	</li>
+			          	</ul>
+	        		</div>
+	      		</nav>
+	    	</div>
+	  	</div>
+	</div>
+    <div>
+		<div class="col-md-offset-2 col-md-2">
+	    	<label><h4>The number of puizes:</h4></label>
+	    </div>	
+	    <div class="col-md-4">
+	    	<input type="text" class="form-control" id="number" value="">
 	    </div>
-      <div class="col-sm-offset-4 col-md-12">
-          <button type="submit" class="btn btn-success" onclick="check_problems()">Check Problems</button>
-     </div>
-  	</form>
-</div>
+	    <div>
+	    	<button type="button" class="btn btn-primary" onclick="make_pluz(number.value)">
+	    		Submit
+	    	</button>
+	    	<button type="button" class="btn btn-success" onclick="check_pluz()">
+	    		Check
+	    	</button>
+	    </div>
+	</div>
+	<form class="form-inline" role="form">
+  		<div class="form-group">
+			<div id="show_pluz">	
+			</div>
+		</div>
+	</form>
 </body>
 </html>
 <script type="text/javascript">
-	function check_problems(){
-    var k=0,s,erros,str; 
-    for(i=1;i<=10;i++){ 
-      str="r"+i;
-      v=document.getElementById(str);
-      vr=parseInt(v.value);
-      if(number1[i]+number2[i]!=vr){
-           wrong[k]=i;
-           k++;
-        }
-    }
-    erros="";
-    for(i=0;i<k;i++) erros=erros+wrong[i]+",";    
-    v1=document.getElementById("result");
-    v1.innerHTML="你做错的题目一共是"+k+"道;分别是：";
-    v2=document.getElementById("erro");
-    v2.innerHTML=erros;
+	var num1=new Array(),num2=new Array();
+	function make_pluz(x){
+		clear_pluz();
+		var st=document.getElementById("show_pluz");
+		var str1="p",str2,str3="sp",str4="di";
+		for(var i=0;i<x;i++){
+			var newdiv=document.createElement("div");
+			str2=str4+String(i);
+			newdiv.id=str2;
+			newdiv.className="col-md-3";
+			st.appendChild(newdiv);
+			num1[i]=Math.floor(Math.random()*100);
+			num2[i]=Math.floor(Math.random()*100);
+			var newspan=document.createElement("label");
+			str2=str3+String(i);
+			newspan.innerHTML=String(num1[i])+"+"+String(num2[i])+"=";
+			newspan.id=str2;
+			newspan.className="col-md-pull-1 col-md-2";
+			var newinput=document.createElement("input");
+			newinput.type="text";
+			str2=str1+String(i);
+			newinput.id=str2;
+			newinput.className="form-control";
+			newdiv.appendChild(newspan);
+			newdiv.appendChild(newinput);
+		}
+	}
+	function clear_pluz(){
+		var str1="p",str2,str3="sp",str4="di";
+		var st=document.getElementById("show_pluz");
+		for(var i=0;i<10000;i++){
+			str2=str4+String(i);
+			if(document.getElementById(str2)==undefined) break;
+			var temp=document.getElementById(str2);
+			st.removeChild(temp);
+			// str2=str3+String(i);
+			// temp=document.getElementById(str2);
+			// st.removeChild(temp);
+			// str2=str1+String(i);
+			// temp=document.getElementById(str2);
+			// st.removeChild(temp);
+		}
+	}
+	function check_pluz(){
+		
 	}
 </script>
