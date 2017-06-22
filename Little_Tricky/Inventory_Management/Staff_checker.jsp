@@ -34,26 +34,9 @@
 			</nav>
 		</div>
 	</div>
-
-	<div class="row clearfix">
-		<div class="col-md-12 column">
-			<ul class="nav nav-tabs">
-				<li>
-					<a href="/github/blog/Little_Tricky/Inventory_Management/book.html">Books</a>
-				</li>
-				<li>
-					<a href="#">Clothes</a>
-				</li>
-				<li class="navbar-right">
-		          	<a href="#">Register</a>
-		        </li>
-				<li class="navbar-right">
-		          	<a href="#">Login</a>
-		        </li>
-			</ul>
-		</div>
-	</div>
-
 </div>
 </body>
 </html>
+<script type="text/javascript">
+	alert(1);
+</script>

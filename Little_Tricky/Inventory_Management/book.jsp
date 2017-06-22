@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<%@ page contentType="text/html; charset=utf-8"%>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -38,7 +38,7 @@
 		<div class="col-md-12 column">
 			<ul class="nav nav-tabs">
 				<li class="active">
-					<a href="/github/blog/Little_Tricky/Inventory_Management/book.html">Books</a>
+					<a href="/github/blog/Little_Tricky/Inventory_Management/book.jsp">Books</a>
 				</li>
 				<li>
 					<a href="#">Clothes</a>
@@ -56,16 +56,16 @@
 				<thead>
 					<tr>
 						<th>
-							编号
+							Id
 						</th>
 						<th>
-							产品
+							Title
 						</th>
 						<th>
-							入库
+							Instock
 						</th>
 						<th>
-							出库
+							Outstock
 						</th>
 					</tr>
 				</thead>
@@ -213,29 +213,12 @@
 				</tbody>
 			</table>
 	<div class="col-md-12 col-md-offset-11">
-		<button type="button" class="btn btn-success" onclick="posttable('/github/blog/Little_Tricky/Inventory_Management/Staff_checker.html',select1.value)">
+		<button type="button" class="btn btn-success" onclick="">
 			Submit
 		</button>
 	</div>
 </body>
 </html>
 <script type="text/javascript">
-	function posttable(url, params){
-	    var tempform = document.createElement("form");
-	    tempform.action = url;
-	    tempform.method = "post";
-	    tempform.style.display="none"
-	    for (var x in params) {
-	        var opt = document.createElement("input");
-	        opt.name = x;
-	        opt.value = params[x];
-	        tempform.appendChild(opt);
-	    }
-	    var opt = document.createElement("input");
-	    opt.type = "submit";
-	    tempform.appendChild(opt);
-	    document.body.appendChild(tempform);
-	    tempform.submit();
-	    document.body.removeChild(tempform);
-	}
+
 </script>

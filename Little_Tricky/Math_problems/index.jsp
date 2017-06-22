@@ -26,9 +26,9 @@
 			            	<li>
 			               		<a href="/github/blog/Little_Tricky/Math_problems">Math problems</a>
 			            	</li>
-                    <li>
-                        <a href="/github/blog/Little_Tricky/Inventory_Management">Inventory Management</a>
-                    </li>
+		                    <li>
+		                        <a href="/github/blog/Little_Tricky/Inventory_Management">Inventory Management</a>
+		                    </li>
 			          	</ul>
 	        		</div>
 	      		</nav>
