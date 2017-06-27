@@ -36,20 +36,20 @@
 	  	</div>
 	</div>
     <div>
-		<div class="col-md-offset-2 col-md-2">
-	    	<label><h4>The number of puizes:</h4></label>
-	    </div>	
-	    <div class="col-md-4">
-	    	<input type="text" class="form-control" id="number" value="">
-	    </div>
-	    <div>
-	    	<button type="button" class="btn btn-primary" onclick="make_pluz(number.value)">
-	    		Submit
-	    	</button>
-	    	<button type="button" class="btn btn-success" onclick="check_pluz()">
-	    		Check
-	    	</button>
-	    </div>
+    	<form role="form" class="form-inline">
+				<center>
+				<div class = "form-group"> 
+					<label><h4>The number of puizes:</h4></label>
+					<input type="text" class="form-control" id="number">
+			   	</div>
+				<button type="button" class="btn btn-primary" onclick="make_pluz(number.value)">
+	    			Submit
+		    	</button>
+		    	<button type="button" class="btn btn-success" onclick="check_pluz()">
+		    		Check
+		    	</button>
+		    	</center>
+		</form>
 	</div>
 	<form class="form-inline" role="form">
   		<div class="form-group">
